@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nathan & Co – Government Services Center, Trichy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #12172b;
+  --navy:   #1b2a52;
+  --blue:   #2a407a;
+  --gold:   #b8924a;
+  --gold2:  #d4aa6a;
+  --gold3:  #f0d898;
+  --sand:   #f8f4ec;
+  --white:  #ffffff;
+  --smoke:  #f2ede4;
+  --border: #ddd5c2;
+  --muted:  #6b7591;
+  --green:  #2d8a50;
+  --line:   rgba(184,146,74,0.3);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--ink);overflow-x:hidden;}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--sand);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(18,23,43,0.96);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(184,146,74,0.2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6vw;height:68px;
+}
+.nav-brand{display:flex;align-items:center;gap:12px;}
+.nav-emblem{
+  width:36px;height:36px;
+  border:1.5px solid var(--gold);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+  color:var(--gold);
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;
+}
+.nav-logo{
+  font-family:'DM Serif Display',serif;
+  color:var(--white);font-size:1.25rem;letter-spacing:0.02em;
+}
+.nav-logo em{font-style:italic;color:var(--gold2);}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{
+  color:rgba(255,255,255,0.65);
+  text-decoration:none;font-size:0.82rem;
+  font-weight:500;letter-spacing:0.05em;text-transform:uppercase;
+  transition:color 0.2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--gold);
+  transform:scaleX(0);transition:transform 0.2s;transform-origin:left;
+}
+.nav-links a:hover{color:var(--gold2);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--ink);font-weight:600;font-size:0.82rem;
+  padding:9px 22px;border-radius:4px;text-decoration:none;
+  letter-spacing:0.03em;
+  transition:opacity 0.2s,transform 0.2s;
+}
+.nav-cta:hover{opacity:0.9;transform:translateY(-1px);}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(160deg,#0d1428 0%,#1b2a52 55%,#1e3566 100%);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 6vw 80px;
+  position:relative;overflow:hidden;
+}
+/* decorative rings */
+.hero::before{
+  content:'';position:absolute;
+  top:-120px;right:-120px;
+  width:600px;height:600px;
+  border-radius:50%;
+  border:1px solid rgba(184,146,74,0.12);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;
+  top:-60px;right:-60px;
+  width:420px;height:420px;
+  border-radius:50%;
+  border:1px solid rgba(184,146,74,0.18);
+  pointer-events:none;
+}
+.hero-glow{
+  position:absolute;top:10%;right:5%;
+  width:380px;height:380px;
+  background:radial-gradient(circle,rgba(184,146,74,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{
+  display:flex;align-items:center;gap:5vw;
+  max-width:1200px;width:100%;
+}
+.hero-left{flex:1;min-width:0;}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:9px;
+  border:1px solid rgba(184,146,74,0.35);
+  background:rgba(184,146,74,0.1);
+  color:var(--gold3);
+  font-size:0.7rem;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;padding:6px 16px;border-radius:2px;
+  margin-bottom:2rem;
+}
+.pill-dot{
+  width:6px;height:6px;background:var(--green);
+  border-radius:50%;animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2.6rem,5.5vw,4.4rem);
+  color:var(--white);line-height:1.1;
+  margin-bottom:1.4rem;
+}
+.hero h1 em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--gold2),var(--gold3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  color:rgba(255,255,255,0.58);font-size:1rem;
+  line-height:1.75;max-width:520px;margin-bottom:2.5rem;
+  font-weight:300;
+}
+.hero-location{
+  display:flex;align-items:flex-start;gap:8px;
+  color:rgba(255,255,255,0.45);font-size:0.82rem;
+  margin-bottom:2.5rem;line-height:1.5;
+}
+.hero-location svg{flex-shrink:0;margin-top:2px;opacity:0.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:9px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--ink);font-weight:700;font-size:0.9rem;
+  padding:14px 30px;border-radius:4px;text-decoration:none;
+  box-shadow:0 8px 32px rgba(184,146,74,0.3);
+  transition:all 0.22s;letter-spacing:0.02em;
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(184,146,74,0.4);}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:9px;
+  border:1px solid rgba(255,255,255,0.25);
+  color:rgba(255,255,255,0.85);font-weight:500;font-size:0.9rem;
+  padding:14px 30px;border-radius:4px;text-decoration:none;
+  transition:all 0.22s;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold2);background:rgba(184,146,74,0.06);}
+
+/* floating cards */
+.hero-right{
+  display:flex;flex-direction:column;gap:14px;
+  flex-shrink:0;width:280px;
+}
+.hcard{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(184,146,74,0.2);
+  border-radius:10px;
+  padding:18px 20px;
+  display:flex;align-items:center;gap:14px;
+  backdrop-filter:blur(12px);
+  transition:border-color 0.2s;
+}
+.hcard:hover{border-color:rgba(184,146,74,0.5);}
+.hcard-icon{
+  width:42px;height:42px;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(184,146,74,0.2),rgba(184,146,74,0.05));
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.hcard-label{color:rgba(255,255,255,0.42);font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;}
+.hcard-val{color:var(--white);font-size:0.9rem;font-weight:600;}
+
+/* divider line */
+.hero-divider{
+  width:60px;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin:2.5rem 0;
+}
+
+/* ─── STRIP ─── */
+.strip{
+  background:var(--navy);
+  border-top:1px solid rgba(184,146,74,0.15);
+  border-bottom:1px solid rgba(184,146,74,0.15);
+  padding:16px 6vw;
+  display:flex;align-items:center;justify-content:center;
+  gap:0;flex-wrap:wrap;overflow:hidden;
+}
+.strip-item{
+  display:flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.55);font-size:0.78rem;font-weight:400;
+  padding:6px 24px;position:relative;white-space:nowrap;
+}
+.strip-item+.strip-item::before{
+  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  height:14px;width:1px;background:rgba(184,146,74,0.25);
+}
+.strip-item svg{opacity:0.7;flex-shrink:0;}
+
+/* ─── SECTIONS ─── */
+section{padding:100px 6vw;}
+.eyebrow{
+  display:flex;align-items:center;gap:12px;
+  color:var(--gold);font-size:0.7rem;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;
+  margin-bottom:0.75rem;
+}
+.eyebrow::before{
+  content:'';display:block;width:28px;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+}
+.sec-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.9rem,3vw,2.8rem);
+  color:var(--ink);line-height:1.15;margin-bottom:1rem;
+}
+.sec-sub{
+  color:var(--muted);font-size:0.95rem;
+  line-height:1.75;max-width:560px;font-weight:300;
+}
+.sec-head{margin-bottom:3.5rem;}
+
+/* ─── SERVICES ─── */
+#services{background:var(--white);}
+.svc-tabs{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.5rem;
+}
+.svc-tab{
+  padding:7px 18px;border-radius:2px;border:1px solid var(--border);
+  background:transparent;color:var(--muted);
+  font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;
+  cursor:pointer;transition:all 0.18s;letter-spacing:0.03em;
+}
+.svc-tab.active,.svc-tab:hover{
+  background:var(--navy);border-color:var(--navy);color:var(--white);
+}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1.1rem;
+}
+.svc-card{
+  background:var(--sand);border:1px solid var(--border);
+  border-radius:8px;padding:22px;
+  position:relative;overflow:hidden;
+  transition:all 0.22s;cursor:default;
+}
+.svc-card::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  transform:scaleX(0);transition:transform 0.22s;transform-origin:left;
+}
+.svc-card:hover{
+  border-color:var(--gold);
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(27,42,82,0.09);
+  background:var(--white);
+}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-ico{font-size:1.6rem;margin-bottom:12px;display:block;line-height:1;}
+.svc-name{font-weight:600;font-size:0.9rem;color:var(--ink);margin-bottom:6px;}
+.svc-desc{color:var(--muted);font-size:0.78rem;line-height:1.6;font-weight:300;}
+.svc-badge{
+  display:inline-block;margin-top:10px;
+  background:rgba(27,42,82,0.08);color:var(--navy);
+  font-size:0.65rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+  padding:3px 9px;border-radius:2px;
+}
+
+/* ─── ABOUT ─── */
+#about{background:var(--smoke);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:20px;padding-bottom:2rem;position:relative;}
+.step:not(:last-child)::before{
+  content:'';position:absolute;left:16px;top:36px;bottom:0;
+  width:1px;background:var(--line);
+}
+.step-num{
+  width:34px;height:34px;flex-shrink:0;
+  border:1px solid var(--gold);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-weight:700;
+  color:var(--gold);background:var(--white);
+}
+.step-body strong{display:block;font-size:0.9rem;color:var(--ink);font-weight:600;margin-bottom:4px;margin-top:6px;}
+.step-body p{color:var(--muted);font-size:0.83rem;line-height:1.65;font-weight:300;}
+
+/* CSC info panel */
+.csc-panel{
+  background:var(--navy);border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 24px 64px rgba(18,23,43,0.2);
+}
+.csc-top{
+  padding:32px;
+  border-bottom:1px solid rgba(184,146,74,0.15);
+}
+.csc-top h3{
+  font-family:'DM Serif Display',serif;
+  color:var(--gold2);font-size:1.4rem;margin-bottom:6px;
+}
+.csc-top p{color:rgba(255,255,255,0.5);font-size:0.83rem;line-height:1.65;font-weight:300;}
+.csc-rows{padding:20px 32px;}
+.csc-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.csc-row:last-child{border:none;}
+.csc-key{color:rgba(255,255,255,0.38);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;}
+.csc-val{color:var(--gold3);font-size:0.88rem;font-weight:600;}
+.csc-logos{
+  padding:20px 32px 28px;
+  display:flex;flex-wrap:wrap;gap:7px;
+}
+.csc-chip{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  color:rgba(255,255,255,0.55);
+  font-size:0.68rem;font-weight:500;letter-spacing:0.04em;
+  padding:5px 12px;border-radius:2px;
+}
+
+/* ─── CONTACT ─── */
+#contact{
+  background:linear-gradient(160deg,#0d1428 0%,var(--navy) 100%);
+  position:relative;overflow:hidden;
+}
+#contact::before{
+  content:'';position:absolute;bottom:-100px;left:-100px;
+  width:500px;height:500px;border-radius:50%;
+  border:1px solid rgba(184,146,74,0.1);pointer-events:none;
+}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start;}
+#contact .eyebrow{color:var(--gold2);}
+#contact .sec-title{color:var(--white);}
+.contact-cards{display:flex;flex-direction:column;gap:0;margin-top:2rem;}
+.cc{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.cc:last-child{border:none;}
+.cc-icon{
+  width:40px;height:40px;flex-shrink:0;
+  background:rgba(184,146,74,0.12);border:1px solid rgba(184,146,74,0.2);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.cc-label{color:rgba(255,255,255,0.35);font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;}
+.cc-val{color:var(--white);font-size:0.9rem;font-weight:500;line-height:1.55;}
+.cc-val a{color:var(--gold2);text-decoration:none;}
+.cc-val a:hover{text-decoration:underline;}
+
+/* form */
+.enq-form{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(184,146,74,0.18);
+  border-radius:12px;padding:36px;
+  backdrop-filter:blur(8px);
+}
+.enq-form h3{
+  font-family:'DM Serif Display',serif;
+  color:var(--gold2);font-size:1.3rem;margin-bottom:1.75rem;
+}
+.fg{margin-bottom:1.1rem;}
+.fg label{
+  display:block;color:rgba(255,255,255,0.38);
+  font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:7px;
+}
+.fg input,.fg select,.fg textarea{
+  width:100%;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:5px;color:var(--white);
+  font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:300;
+  padding:12px 14px;outline:none;transition:border-color 0.2s;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,0.2);}
+.fg select option{background:#1b2a52;color:var(--white);}
+.fg textarea{resize:vertical;min-height:88px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{
+  width:100%;margin-top:0.5rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--ink);font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:0.9rem;letter-spacing:0.03em;
+  padding:14px;border:none;border-radius:5px;cursor:pointer;
+  transition:all 0.22s;
+}
+.submit-btn:hover{opacity:0.9;transform:translateY(-1px);box-shadow:0 8px 28px rgba(184,146,74,0.35);}
+
+/* ─── MAP STRIP ─── */
+.map-strip{
+  background:var(--ink);padding:0;
+  display:flex;align-items:stretch;
+}
+.map-info{
+  padding:60px 6vw;flex:1;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.map-info h4{
+  font-family:'DM Serif Display',serif;
+  color:var(--gold2);font-size:1.2rem;margin-bottom:16px;
+}
+.map-addr{color:rgba(255,255,255,0.55);font-size:0.88rem;line-height:1.8;font-weight:300;}
+.map-addr strong{color:var(--white);font-weight:600;}
+.map-embed{flex:1.4;min-height:260px;}
+.map-embed iframe{width:100%;height:100%;border:none;display:block;filter:grayscale(0.3) contrast(1.05);}
+
+/* ─── FOOTER ─── */
+footer{
+  background:#080d1a;
+  padding:32px 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+  border-top:1px solid rgba(184,146,74,0.15);
+}
+.foot-brand{
+  font-family:'DM Serif Display',serif;
+  color:var(--white);font-size:1.1rem;
+}
+.foot-brand em{font-style:italic;color:var(--gold2);}
+.foot-copy{color:rgba(255,255,255,0.28);font-size:0.75rem;line-height:1.6;}
+.foot-links{display:flex;gap:1.5rem;}
+.foot-links a{color:rgba(255,255,255,0.35);font-size:0.75rem;text-decoration:none;transition:color 0.2s;}
+.foot-links a:hover{color:var(--gold2);}
+
+/* ─── WA FLOAT ─── */
+.wa-btn{
+  position:fixed;bottom:28px;right:28px;z-index:300;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;text-decoration:none;
+  box-shadow:0 6px 24px rgba(37,211,102,0.4);
+  transition:transform 0.2s;
+}
+.wa-btn:hover{transform:scale(1.1);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hero-inner{flex-direction:column;}
+  .hero-right{width:100%;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .map-strip{flex-direction:column;}
+  .map-embed{min-height:220px;}
+  .form-row{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;}
+  .foot-links{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-emblem">N</div>
+    <div class="nav-logo">Nathan <em>&amp; Co</em></div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="https://wa.me/918300291238" class="nav-cta" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.11 1.523 5.833L0 24l6.336-1.498A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.808 9.808 0 01-5.032-1.388l-.36-.214-3.733.882.939-3.628-.234-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+    WhatsApp Us
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        Govt. Authorised · CSC Center ID 426616130015
+      </div>
+      <h1>Your Trusted<br><em>Government Services</em><br>Partner in Trichy</h1>
+      <p class="hero-sub">Certificates, ID cards, land documents &amp; 25+ government services — handled accurately and swiftly, so you never have to stand in a queue.</p>
+      <div class="hero-location">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Opp. to Canara Bank, Sangiliyandapuram, Trichy – 620 001, Tamil Nadu
+      </div>
+      <div class="hero-btns">
+        <a href="#services" class="btn-gold">View All Services</a>
+        <a href="https://wa.me/918300291238" class="btn-outline" target="_blank">💬 Chat on WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hcard">
+        <div class="hcard-icon">🏛️</div>
+        <div>
+          <div class="hcard-label">Centre Type</div>
+          <div class="hcard-val">Govt. Authorised CSC</div>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">📋</div>
+        <div>
+          <div class="hcard-label">Services Available</div>
+          <div class="hcard-val">25+ Government Services</div>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">📲</div>
+        <div>
+          <div class="hcard-label">WhatsApp &amp; Call</div>
+          <div class="hcard-val">83002 91238</div>
+        </div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">✉️</div>
+        <div>
+          <div class="hcard-label">Email</div>
+          <div class="hcard-val">Nathangangai@gmail.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    Central &amp; State Govt. Approved
+  </div>
+  <div class="strip-item">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Fast Processing
+  </div>
+  <div class="strip-item">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    Secure &amp; Confidential
+  </div>
+  <div class="strip-item">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Tamil &amp; English Typing
+  </div>
+  <div class="strip-item">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Xerox · Colour Print · Lamination
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-head">
+    <div class="eyebrow">What We Offer</div>
+    <div class="sec-title">All Services at a Glance</div>
+    <p class="sec-sub">From essential certificates to land documents and online applications — everything handled under one roof, no queue required.</p>
+  </div>
+
+  <div class="svc-grid">
+    <div class="svc-card"><span class="svc-ico">📄</span><div class="svc-name">Caste Certificate</div><div class="svc-desc">Community/caste certificate for reservations, scholarships &amp; government applications.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">💰</span><div class="svc-name">Income Certificate</div><div class="svc-desc">Income proof for welfare schemes, fee concessions &amp; subsidies.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">🏠</span><div class="svc-name">Residence Certificate</div><div class="svc-desc">Address/domicile certificate for admissions, jobs &amp; legal purposes.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">👶</span><div class="svc-name">Birth Certificate</div><div class="svc-desc">Official birth record for school enrolment, passports &amp; identity.</div><span class="svc-badge">Civil Records</span></div>
+    <div class="svc-card"><span class="svc-ico">🕊️</span><div class="svc-name">Death Certificate</div><div class="svc-desc">Legal death record for insurance, inheritance &amp; property transfers.</div><span class="svc-badge">Civil Records</span></div>
+    <div class="svc-card"><span class="svc-ico">🤝</span><div class="svc-name">OBC Certificate</div><div class="svc-desc">Other Backward Classes certificate for central &amp; state government benefits.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">👰</span><div class="svc-name">Widow Certificate</div><div class="svc-desc">Widowhood certificate enabling pension schemes &amp; welfare benefits.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">💒</span><div class="svc-name">Inter-Caste Marriage Cert.</div><div class="svc-desc">Certificate for couples from different communities for incentive schemes.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">📜</span><div class="svc-name">Legal Heir Certificate</div><div class="svc-desc">Inheritance document establishing legal heirs for property &amp; financial matters.</div><span class="svc-badge">Legal</span></div>
+    <div class="svc-card"><span class="svc-ico">👦</span><div class="svc-name">No-Male-Child Certificate</div><div class="svc-desc">For families with daughters only, needed for certain government schemes.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">👴</span><div class="svc-name">60+ Senior Pension</div><div class="svc-desc">Application &amp; registration for old-age pension under welfare programmes.</div><span class="svc-badge">Pension</span></div>
+    <div class="svc-card"><span class="svc-ico">♿</span><div class="svc-name">Differently Abled Cert.</div><div class="svc-desc">Disability certificate for reservations, concessions &amp; welfare entitlements.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">👩</span><div class="svc-name">Unmarried Girl Certificate</div><div class="svc-desc">Spinster certificate required for certain government schemes &amp; applications.</div><span class="svc-badge">Govt. Certificate</span></div>
+    <div class="svc-card"><span class="svc-ico">💍</span><div class="svc-name">First Marriage Certificate</div><div class="svc-desc">Marriage registration &amp; first-marriage certificate for legal &amp; scheme purposes.</div><span class="svc-badge">Civil Records</span></div>
+    <div class="svc-card"><span class="svc-ico">🗺️</span><div class="svc-name">FMB / Patta / Chitta</div><div class="svc-desc">Field Measurement Book, Patta &amp; Chitta extracts for land records &amp; property.</div><span class="svc-badge">Land Records</span></div>
+    <div class="svc-card"><span class="svc-ico">🏗️</span><div class="svc-name">Building Plan Approval</div><div class="svc-desc">Building plan submissions and approval documentation assistance.</div><span class="svc-badge">Property</span></div>
+    <div class="svc-card"><span class="svc-ico">🪪</span><div class="svc-name">Aadhaar Card</div><div class="svc-desc">New enrolment, updates, corrections &amp; print services.</div><span class="svc-badge">ID Card</span></div>
+    <div class="svc-card"><span class="svc-ico">🪙</span><div class="svc-name">PAN Card</div><div class="svc-desc">New PAN application &amp; corrections for income tax &amp; financial services.</div><span class="svc-badge">ID Card</span></div>
+    <div class="svc-card"><span class="svc-ico">🗳️</span><div class="svc-name">Voter ID</div><div class="svc-desc">New registration, corrections &amp; address change applications.</div><span class="svc-badge">ID Card</span></div>
+    <div class="svc-card"><span class="svc-ico">🛒</span><div class="svc-name">Ration Card</div><div class="svc-desc">New applications, smart card upgrades &amp; member additions.</div><span class="svc-badge">Welfare</span></div>
+    <div class="svc-card"><span class="svc-ico">🚗</span><div class="svc-name">Driving Licence</div><div class="svc-desc">New DL applications, renewals &amp; name/address corrections online.</div><span class="svc-badge">Licence</span></div>
+    <div class="svc-card"><span class="svc-ico">✈️</span><div class="svc-name">Passport Apply &amp; Renewal</div><div class="svc-desc">Passport Seva applications, renewals &amp; document assistance.</div><span class="svc-badge">Travel</span></div>
+    <div class="svc-card"><span class="svc-ico">⚡</span><div class="svc-name">EB Bill Payment</div><div class="svc-desc">TANGEDCO electricity bill payment &amp; online utility services.</div><span class="svc-badge">Utility</span></div>
+    <div class="svc-card"><span class="svc-ico">🏭</span><div class="svc-name">MSME Certificate</div><div class="svc-desc">Udyam/MSME registration for small &amp; medium enterprises.</div><span class="svc-badge">Business</span></div>
+    <div class="svc-card"><span class="svc-ico">💼</span><div class="svc-name">Employment Renewal</div><div class="svc-desc">Employment exchange card renewal &amp; new registration for job seekers.</div><span class="svc-badge">Employment</span></div>
+    <div class="svc-card"><span class="svc-ico">🖨️</span><div class="svc-name">Typing · Xerox · Print</div><div class="svc-desc">Tamil &amp; English typing, Xerox copies, colour printing &amp; lamination.</div><span class="svc-badge">Office Services</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="eyebrow">Why Nathan &amp; Co</div>
+      <div class="sec-title">We Make Government<br>Services Simple</div>
+      <p class="sec-sub" style="margin-bottom:3rem;">Navigating government paperwork is stressful. We take the burden away — accurate, fast, and handled with care.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>Official CSC Centre</strong>
+            <p>Authorised by the Central &amp; State Government under Digital India's Common Service Centre network with ID 426616130015.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>25+ Services Under One Roof</strong>
+            <p>Certificates, ID cards, land documents, utility bills, and more — no need to visit multiple government offices.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>Bilingual Support</strong>
+            <p>We serve you in Tamil and English — typing, documentation, and guidance in both languages.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <strong>WhatsApp-First Service</strong>
+            <p>Share your documents and get updates directly on WhatsApp at 83002 91238.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="csc-panel">
+      <div class="csc-top">
+        <h3>Digital India CSC</h3>
+        <p>Authorised Common Service Centre providing e-governance services to the citizens of Trichy and surrounding areas.</p>
+      </div>
+      <div class="csc-rows">
+        <div class="csc-row"><span class="csc-key">CSC Center ID</span><span class="csc-val">426616130015</span></div>
+        <div class="csc-row"><span class="csc-key">Phone / WhatsApp</span><span class="csc-val">83002 91238</span></div>
+        <div class="csc-row"><span class="csc-key">Email</span><span class="csc-val">Nathangangai@gmail.com</span></div>
+        <div class="csc-row"><span class="csc-key">Location</span><span class="csc-val">Trichy – 620 001</span></div>
+        <div class="csc-row"><span class="csc-key">Languages</span><span class="csc-val">Tamil &amp; English</span></div>
+      </div>
+      <div class="csc-logos">
+        <span class="csc-chip">Aadhaar Authorised</span>
+        <span class="csc-chip">EPFO</span>
+        <span class="csc-chip">FSSAI</span>
+        <span class="csc-chip">Passport Seva</span>
+        <span class="csc-chip">GST</span>
+        <span class="csc-chip">Indian Railways</span>
+        <span class="csc-chip">FASTag</span>
+        <span class="csc-chip">MSME</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="eyebrow">Reach Us</div>
+      <div class="sec-title">We're Here to Help</div>
+      <p class="sec-sub" style="color:rgba(255,255,255,0.45);margin-bottom:0;">Walk in, call, email, or WhatsApp — whichever works best for you.</p>
+      <div class="contact-cards">
+        <div class="cc">
+          <div class="cc-icon">📲</div>
+          <div>
+            <div class="cc-label">WhatsApp &amp; Call</div>
+            <div class="cc-val"><a href="https://wa.me/918300291238">83002 91238</a></div>
+          </div>
+        </div>
+        <div class="cc">
+          <div class="cc-icon">✉️</div>
+          <div>
+            <div class="cc-label">Email</div>
+            <div class="cc-val"><a href="mailto:Nathangangai@gmail.com">Nathangangai@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="cc">
+          <div class="cc-icon">📍</div>
+          <div>
+            <div class="cc-label">Address</div>
+            <div class="cc-val">Opp. to Canara Bank,<br>Sangiliyandapuram,<br>Trichy – 620 001, Tamil Nadu</div>
+          </div>
+        </div>
+        <div class="cc">
+          <div class="cc-icon">🏛️</div>
+          <div>
+            <div class="cc-label">CSC Center ID</div>
+            <div class="cc-val">426616130015</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="enq-form">
+      <h3>Send an Enquiry</h3>
+      <div class="form-row">
+        <div class="fg"><label>Your Name</label><input type="text" id="f-name" placeholder="Full name"></div>
+        <div class="fg"><label>Phone Number</label><input type="tel" id="f-phone" placeholder="Mobile number"></div>
+      </div>
+      <div class="fg">
+        <label>Service Required</label>
+        <select id="f-service">
+          <option value="">— Select a service —</option>
+          <option>Caste Certificate</option>
+          <option>Income Certificate</option>
+          <option>Residence Certificate</option>
+          <option>Birth / Death Certificate</option>
+          <option>OBC Certificate</option>
+          <option>Widow Certificate</option>
+          <option>Inter-Caste Marriage Certificate</option>
+          <option>Legal Heir Certificate</option>
+          <option>FMB / Patta / Chitta</option>
+          <option>Building Plan Approval</option>
+          <option>Aadhaar Card</option>
+          <option>PAN Card</option>
+          <option>Voter ID</option>
+          <option>Ration Card</option>
+          <option>Driving Licence</option>
+          <option>Passport Apply / Renewal</option>
+          <option>EB Bill Payment</option>
+          <option>MSME Certificate</option>
+          <option>Employment Exchange Renewal</option>
+          <option>Typing / Xerox / Print</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message (optional)</label><textarea id="f-msg" placeholder="Any additional details…"></textarea></div>
+      <button class="submit-btn" onclick="sendWA()">Send via WhatsApp →</button>
+    </div>
+  </div>
+</section>
+
+<!-- MAP STRIP -->
+<div class="map-strip">
+  <div class="map-info">
+    <h4>Find Us</h4>
+    <div class="map-addr">
+      <strong>Nathan &amp; Co – CSC Center</strong><br>
+      Opp. to Canara Bank,<br>
+      Sangiliyandapuram,<br>
+      Trichy – 620 001<br>
+      Tamil Nadu, India<br><br>
+      📲 83002 91238<br>
+      ✉️ Nathangangai@gmail.com
+    </div>
+  </div>
+  <div class="map-embed">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.0!2d78.7047!3d10.8050!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSangiliyandapuram%2C+Trichy%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-brand">Nathan <em>&amp; Co</em></div>
+  <div class="foot-copy">
+    CSC ID: 426616130015 &nbsp;·&nbsp; Sangiliyandapuram, Trichy – 620 001<br>
+    83002 91238 &nbsp;·&nbsp; Nathangangai@gmail.com
+  </div>
+  <div class="foot-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/918300291238" class="wa-btn" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+function sendWA(){
+  const n = document.getElementById('f-name').value||'Customer';
+  const p = document.getElementById('f-phone').value;
+  const s = document.getElementById('f-service').value||'General Enquiry';
+  const m = document.getElementById('f-msg').value;
+  const t = `Hello Nathan %26 Co,%0AName: ${n}%0APhone: ${p}%0AService: ${s}${m?'%0AMessage: '+encodeURIComponent(m):''}`;
+  window.open(`https://wa.me/918300291238?text=${t}`,'_blank');
+}
+</script>
+</body>
+</html>
